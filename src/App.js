@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+var MAX = 10;
+var MIN = 0;
 function App() {
+  var [count, setCount] = useState(0);
+  function increment() {
+    setCount((c) => c + 1);
+  }
+  function decrement() {
+    setCount((c) => c - 1);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ textAlign: "center" }}>
+      <p>{count}</p>
+      <button disabled={count === MAX} onClick={increment}>
+        Increment
+      </button>
+      <button disabled={count === MIN} onClick={decrement}>
+        Decrement
+      </button>
     </div>
   );
 }
